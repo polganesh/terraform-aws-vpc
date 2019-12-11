@@ -11,5 +11,27 @@ Although currently one can find various terraform modules to provision **AWS VPC
 - AWS account
 - AWS CLI
 
+## This module responsible for creating
+|Subnets                         | Notes        |
+| ------------                    | ------------ |
+| Public Subnet                   | A place for running Load Balancers (Application, Classic, Network), API Gateway....               |
+| Private subnet for computing    | A place for running Compute resources like AWS lambda, ElasticBeanstalk, EC2, ECS, EKS......      |
+| Private subnet for persistence layer    | A place for running RDS, NoSQL, Elastic search               |
+
+|Gateways                         | Notes        |
+| ------------                    | ------------ |
+| Nat Gateway                    |Responsible for Instances(EC2/Containers etc) in private subnet to communicate with the Internet but the reverse is not true.
+Associate public/Elastic IP with each Nat Gateway |
+| Internet Gateway                    |Provide a target in your VPC route tables for internet-routable traffic.
+Perform network address translation (NAT) for instances that have been assigned public IPv4 addresses |
+| VPN Gateway                    |Enable the on-premises network to connect to this VPC|
+
+| AWS Resource                    | Notes  |
+| ------------                    | ------------ |
+|Single VPC                       |             |
+|Route and Route tables           |             |
+
+
+
 
 
