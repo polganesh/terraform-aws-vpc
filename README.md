@@ -15,6 +15,23 @@ This module mainly concentrate on
 - AWS account
 - AWS CLI
 
+## Important Variables
+|variable name                         	|is required	|Default Value	|Type	| Notes       	 		                     |
+|:--------------------------------------|:--------------|:------------	|:---	|:---------------------------------------------------|
+|vpc_cidr_block				|Y		|		|String	|Valid CIDR Range	                             |
+|public_subnet_cidr_list		|N		|empty list	|list	| Valid list of CIDR range inline with vpc_cidr_block|
+|private_app_subnet_list		|N		|empty list	|list	| Valid list of CIDR range inline with vpc_cidr_block|
+|private_db_subnet_list			|N		|empty list	|list	| Valid list of CIDR range inline with vpc_cidr_block|
+|region					|N		|eu-west-1	|string	| Valid AWS Region|
+|region_id				|N		|euw1		|string	| Region Identifier. for more information about this please refer following sections|
+|az_list				|N		|eu-west-1a,eu-west-1b, eu-west-1c|list	|Define Az in which subnet to be get created. Availability zone inline with region.it's count must be same as cidr ranges define for subnets. |
+|vpc_seq_id				|N		|001|string	|Define sequence for combination of regionId,cost_centre and environment. one can define any random string,but it is better if is sequential number |
+|seq_id				|N		|001|string	|usually some sequential number. in this case it should be same as vpc_seq_id |
+|environment				|N		|dev|string	|indicates name of our environment.it can be anything. Possible values dev,cit,sit,uat,pprod,prod,n. for more information refer following sections.|
+|cost_centre				|N		|na|string	|A part of an organization to which bill might be charged.e.g. finance/it/hr/wholesale/retail/investment etc...|
+
+for complete list of variables please refer variables.tf of this module.
+
 ## This module responsible for creating
 |Subnets                         	| Notes        |
 |:--------------------------------------|:------------ |
