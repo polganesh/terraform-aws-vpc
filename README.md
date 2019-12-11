@@ -6,4 +6,10 @@ Although currently one can find various terraform modules to provision **AWS VPC
 - Make AWS resources more readable when navigating in AWS console. This became  more useful when your AWS account become very huge and contains a huge amount of AWS services
 - Apply simple strategies for creating resources and improve security. e.g. enforce RDS in private subnet, compute resources like ECS, EKS in private subnet
 
+## Dependencies and Prerequisites
+- Terraform version 0.12 and higher
+- AWS account
+- AWS CLI
+
+
 
