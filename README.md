@@ -31,6 +31,78 @@ Perform network address translation (NAT) for instances that have been assigned 
 |Single VPC                       |             |
 |Route and Route tables           |             |
 
+## Example
+```
+module "vpc" {
+source="git::https://github.com/polganesh/terraform-aws-vpc.git"
+vpc_cidr_block = "10.10.0.0/16"
+public_subnet_cidr_list = ["10.10.1.0/24", "10.10.2.0/24", "10.10.3.0/24"]
+private_app_subnet_list = ["10.10.4.0/24", "10.10.5.0/24", "10.10.6.0/24"]
+private_db_subnet_list = ["10.10.7.0/24", "10.10.8.0/24", "10.10.9.0/24"]
+region = "eu-central-1"
+region_id = "euc1"
+az_list = ["eu-central-1a", "eu-central-1b", "eu-central-1c"]
+vpc_seq_id = "001"
+seq_id = "001"
+environment = "n"
+cost_centre = "tech"
+build_date = "30092019"
+version_id = "001"
+}
+```
+
+### AWS Resources created
+| VPC                         |                                                         |
+|---------------------------- | --------------------------------------------------------|
+| VPC name format             | vpc-{region-id}-{environment}-{cost_centre}-{vpc_seq_id}|
+|Example                      | vpc-euc1-n-tech-001                                     |
+|Important Notes              | helpful for anyone to identify this VPC created in eu-central-1, for non prod account, cost for any resources created in this VPC will be managed by tech business unit in organization, it is first VPC in this AWS account with remaining combination                                                                             |
+
+
+| Subnets             |                                                         |
+|-------------------- | --------------------------------------------------------|
+|Subnet name format   |sub-{region-id}-{environment}-{cost_centre}-vpc{vpc_seq_id}-{pub,privApp,privDb}-{az-indicator}-{seq_id}|
+|Example for public subnets|sub-euc1-n-tech-vpc001-pub-1a-001                   |
+|                     |sub-euc1-n-tech-vpc001-pub-1b-001                        |
+|                     |sub-euc1-n-tech-vpc001-pub-1c-001                        |
+|Example for private App subnets|sub-euc1-n-tech-vpc001-privApp-1a-001          |
+|                     |sub-euc1-n-tech-vpc001-privApp-1b-001                    |
+|                     |sub-euc1-n-tech-vpc001-privApp-1c-001                    |
+|Example for private Db subnets|sub-euc1-n-tech-vpc001-privDb-1a-001          |
+|                     |sub-euc1-n-tech-vpc001-privDb-1b-001                    |
+|                     |sub-euc1-n-tech-vpc001-privDb-1c-001                    |
+
+| Route Tables        |                                                         |
+|-------------------- | --------------------------------------------------------|
+|Route table format   |rtb-{region-id}-{environment}-{cost_centre}-vpc{vpc_seq_id}-{pub,privApp,privDb}-{az-indicator}-{seq_id}|
+|Example for route tables|rtb-euc1-n-tech-vpc001-pub-1a-001                  |
+||rtb-euc1-n-tech-vpc001-pub-1b-001                  |
+||rtb-euc1-n-tech-vpc001-pub-1c-001                  |
+||rtb-euc1-n-tech-vpc001-privApp-1a-001              |
+||rtb-euc1-n-tech-vpc001-privApp-1b-001              |
+||rtb-euc1-n-tech-vpc001-privApp-1c-001              |
+||rtb-euc1-n-tech-vpc001-privDb-1a-001              |
+||rtb-euc1-n-tech-vpc001-privDb-1b-001              |
+||rtb-euc1-n-tech-vpc001-privDb-1c-001              |
+
+
+| Nat Gateways        |                                                         |
+|-------------------- | --------------------------------------------------------|
+|Nat Gateway format   |ngw-{region-id}-{environment}-{cost_centre}-vpc{vpc_seq_id}-{az-indicator}-{seq_id}|
+||ngw-euc1-n-tech-vpc001-1a-001|
+||ngw-euc1-n-tech-vpc001-1b-001|
+||ngw-euc1-n-tech-vpc001-1c-001|
+
+| VPN Gateway        |                                                         |
+|-------------------- | --------------------------------------------------------|
+|VPN Gateway format   |vpngw-{region-id}-{environment}-{cost_centre}-{seq_id}|
+||vpngw-euc1-n-tech-001|
+
+| Internet Gateway        |                                                         |
+|-------------------- | --------------------------------------------------------|
+|Internet Gateway format   |igw-{region-id}-{environment}-{cost_centre}-{seq_id}|
+||igw-euc1-n-tech-001|
+	
 
 
 
