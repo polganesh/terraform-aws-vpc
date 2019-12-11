@@ -23,17 +23,15 @@ This module mainly concentrate on
 | Private subnet for **Persistence layer**	| A place for running RDS, NoSQL, Elastic search  ....             |
 
 |Gateways                         	| Notes        |
-|:-----------				|:------------ |
-| Nat Gateway                    	|  Responsible for Instances(EC2/Containers etc) in private subnet to communicate with the 							Internet but the reverse is not true.
-					   Associate public/Elastic IP with each Nat Gateway |
-| Internet Gateway                    	|  Provide a target in your VPC route tables for internet-routable traffic.
-					   Perform network address translation (NAT) for instances that have been assigned public IPv4 addresses |
+|:--------------------------------------|:------------ |
+| Nat Gateway                    	|  Responsible for Instances(EC2/Containers etc) in private subnet to communicate with the 							Internet but the reverse is not true. Associate public/Elastic IP with each Nat Gateway|
+| Internet Gateway                    	|  Provide a target in your VPC route tables for internet-routable traffic. Perform network address translation (NAT) for instances that have been assigned public IPv4 addresses |
 | VPN Gateway                    	|Enable the on-premises network to connect to this VPC|
 
-| AWS Resource                    | Notes  |
-|:------------                    |:------------ |
-|Single VPC                       |             |
-|Route and Route tables           |             |
+| AWS Resource           | Notes       |
+|:-----------------------|:------------|
+|Single VPC              |             |
+|Route and Route tables  |             |
 
 ## Example
 ```
