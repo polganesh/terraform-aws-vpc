@@ -32,6 +32,21 @@ This module mainly concentrate on
 
 for complete list of variables please refer variables.tf of this module.
 
+## Important Notes for Tags
+This module add/override  following tags to various resources created.
+
+|Tag Key   	| Variable 	|Notes												|
+|:--------------|:--------------|:----------------------------------------------------------------------------------------------|
+|RegionId  	|region_id 	|Represent indicator for region in which resource present					|
+|Environment  	|environment 	|Represent Environment 										|
+|CostCentre  	|cost_centre 	|some predefined, unique identifier across org for identifying entity responsible for cost	|
+|VPCSeqId  	|vpc_seq_id 	|Indicator for VPC	|
+|VPCSeqId  	|vpc_seq_id 	|Indicator for VPC	|
+|VersionId  	|version_id 	|it is less signficant,but if anyone want to track it is good idea|
+|BuildDate  	|build_date 	|it is less signficant,but if someone wants to track date(predefine date format defined in your org) then it is good indicator for date on which this component/resource created/updated|
+|AppRole  	| 	|it is constant with value **network**|
+
+
 ## This module responsible for creating
 |Subnets                         	| Notes        |
 |:--------------------------------------|:------------ |
