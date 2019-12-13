@@ -32,21 +32,19 @@ This module mainly concentrate on
 
 for complete list of variables please refer variables.tf of this module.
 
-### Important Notes for region and region_id
-
-#### region
+### region
 * Indicates region in which VPC to be created.
 * Possible values :- https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html
 * e.g. for Europe ireland :- eu-west-1
 
-#### region_id
+### region_id
 * short indicator for region
 * it can be  max 5 char.
 * for **eu**-**w**est-1 it is **euw1**
 * for **ap**-**s**outh**e**ast-1, singapore i.e. apse1	
 * please note these are indicator for ideal region_id. one can use its own standard if needed.
 
-#### cost_centre
+### cost_centre
 * It represents an entity which will own cost for resources created in this VPC .
 * Any org can have multiple departments wfollowing cost centres. following values are indicative.one can use their own indicator,but one need to follow same throughout.
 * all small case letters
@@ -67,6 +65,23 @@ manufacturing		|mfg|
 banking			|bank|
 investment		|inv|
 marketing		|mkt|
+
+### environment
+* It represents the environment for which this VPC created for. 
+* length 1 to 3 chars
+* all small case letters
+* Possible values
+
+Value  | Important Note
+------------- | -------------
+dev  | 	for **Dev**elopment environment
+cit  | 	specific to **C**omponent **I**ntegration **T**esting
+sit  | 	specific to **S**ystem **I**ntegration **T**esting
+uat  | 	specific to **U**ser **A**cceptance **T**esting
+pre  | 	specific to **Pre**prod environment
+n    |	VPC which is **not** for production env
+p    |	VPC for **P**roduction environment
+
 
 ## Important Notes for Tags
 This module add/override  following tags to various resources created.
