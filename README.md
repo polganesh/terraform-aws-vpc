@@ -32,20 +32,54 @@ This module mainly concentrate on
 
 for complete list of variables please refer variables.tf of this module.
 
+### Important Notes for region and region_id
+
+#### region
+* Indicates region in which VPC to be created.
+* Possible values :- https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html
+* e.g. for Europe ireland :- eu-west-1
+
+#### region_id
+* short indicator for region
+* it can be  max 5 char.
+* for **eu**-**w**est-1 it is **euw1**
+* for **ap**-**s**outh**e**ast-1, singapore i.e. apse1	
+* please note these are indicator for ideal region_id. one can use its own standard if needed.
+
+#### cost_centre
+* It represents an entity which will own cost for resources created in this VPC .
+* Any org can have multiple departments wfollowing cost centres. following values are indicative.one can use their own indicator,but one need to follow same throughout.
+* all small case letters
+* length 1 to 4 chars
+
+Possible Cost Centres	|value
+---------------------	|----
+admin			|admn|
+infrastructure		|infra|
+techsupport		|tsup|
+hr			|hr|
+it			|it|
+legal			|lgl|
+finance			|fin|
+wholesale		|whsl|
+retail			|rtl|
+manufacturing		|mfg|
+banking			|bank|
+investment		|inv|
+marketing		|mkt|
+
 ## Important Notes for Tags
 This module add/override  following tags to various resources created.
 
 |Tag Key   	| Variable 	|Notes												|
 |:--------------|:--------------|:----------------------------------------------------------------------------------------------|
 |RegionId  	|region_id 	|Represent indicator for region in which resource present					|
-|Environment  	|environment 	|Represent Environment 										|
-|CostCentre  	|cost_centre 	|some predefined, unique identifier across org for identifying entity responsible for cost	|
-|VPCSeqId  	|vpc_seq_id 	|Indicator for VPC	|
+|Environment  	|environment 	|Represent Environment. 										|
+|CostCentre  	|cost_centre 	|some predefined, unique identifier across org for identifying entity responsible for cost.	|
 |VPCSeqId  	|vpc_seq_id 	|Indicator for VPC	|
 |VersionId  	|version_id 	|it is less signficant,but if anyone want to track it is good idea|
 |BuildDate  	|build_date 	|it is less signficant,but if someone wants to track date(predefine date format defined in your org) then it is good indicator for date on which this component/resource created/updated|
-|AppRole  	| 	|it is constant with value **network**|
-
+|AppRole  	| 	|it is constant with value **network** for various resources created by this module.|
 
 ## This module responsible for creating
 |Subnets                         	| Notes        |
