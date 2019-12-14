@@ -16,8 +16,8 @@ This module mainly concentrate on
 - AWS CLI
 
 ## Important Variables
-|variable name                         	|is required	|Default Value	|Type	| Notes       	 		                     |
-|:--------------------------------------|:--------------|:------------	|:---	|:---------------------------------------------------|
+|Variable name                         	|is required	|Default Value	|Type 	| Notes       	 		                     |
+|:--------------------------------------|:--------------|:--------------|:-------|:---------------------------------------------------|
 |vpc_cidr_block				|Y		|		|String	|Valid CIDR Range	                             |
 |public_subnet_cidr_list		|N		|empty list	|list	| Valid list of CIDR range inline with vpc_cidr_block|
 |private_app_subnet_list		|N		|empty list	|list	| Valid list of CIDR range inline with vpc_cidr_block|
@@ -51,7 +51,7 @@ for complete list of variables please refer variables.tf of this module.
 * length 1 to 4 chars
 
 Possible Cost Centres	|value
----------------------	|----
+|:---------------------|:----|
 admin			|admn|
 infrastructure		|infra|
 techsupport		|tsup|
@@ -73,7 +73,7 @@ marketing		|mkt|
 * Possible values
 
 Value  | Important Note
-------------- | -------------
+|:------------- |:-------------|
 dev  | 	for **Dev**elopment environment
 cit  | 	specific to **C**omponent **I**ntegration **T**esting
 sit  | 	specific to **S**ystem **I**ntegration **T**esting
@@ -86,8 +86,8 @@ p    |	VPC for **P**roduction environment
 ## Important Notes for Tags
 This module add/override  following tags to various resources created.
 
-|Tag Key   	| Variable 	|Notes												|
-|:--------------|:--------------|:----------------------------------------------------------------------------------------------|
+|Tag Key   	| Variable 	|Notes											|
+|:--------------|:--------------|:---------------------------------------------------------------------------------------|
 |RegionId  	|region_id 	|Represent indicator for region in which resource present					|
 |Environment  	|environment 	|Represent Environment. 										|
 |CostCentre  	|cost_centre 	|some predefined, unique identifier across org for identifying entity responsible for cost.	|
