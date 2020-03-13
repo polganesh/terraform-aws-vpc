@@ -35,15 +35,18 @@ variable "vpc_seq_id" {
 variable "public_subnet_cidr_list" {
   description = "all public facing resources e.g. ALB will reside in this subnet"
   type        = list
+   default     =[]
 }
 variable "private_app_subnet_list" {
   description = "all backend micro services ECS/K8s etc will receive request from this."
   type        = list
+   default     =[]
 }
 
 variable "private_db_subnet_list" {
   description = "all noSQL, RDS etc will reside here"
   type        = list
+  default     =[]
 }
 variable "az_list" {
   type    = list
