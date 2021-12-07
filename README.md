@@ -42,7 +42,7 @@ for complete list of variables please refer variables.tf of this module.
 * it can be  max 5 char.
 * for **eu**-**w**est-1 it is **euw1**
 * for **ap**-**s**outh**e**ast-1, singapore i.e. apse1	
-* please note these are indicator for ideal region_id. one can use its own standard if needed.
+* Please note these are indicator for ideal region_id. one can use its own standard if needed.
 
 ### cost_centre
 * It represents an entity which will own cost for resources created in this VPC .
@@ -103,16 +103,16 @@ This module add/override  following tags to various resources created.
 | Private subnet for **Computing**      |Ideal for running Compute resources like AWS lambda, ElasticBeanstalk, EC2, ECS, EKS......      |
 | Private subnet for **Persistence layer**	| A place for running RDS, NoSQL, Elastic search  ....             |
 
-|Gateways                         	| Notes        |
-|:--------------------------------------|:------------ |
-| Nat Gateway                    	|  Responsible for Instances(EC2/Containers etc) in private subnet to communicate with the 							Internet but the reverse is not true. Associate public/Elastic IP with each Nat Gateway|
-| Internet Gateway                    	|  Provide a target in your VPC route tables for internet-routable traffic. Perform network address translation (NAT) for instances that have been assigned public IPv4 addresses |
-| VPN Gateway                    	|Enable the on-premises network to connect to this VPC|
+|Gateways                         	| Notes                                                                                                                                                                                                                                                                      |
+|:--------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Nat Gateway                    	| Responsible for Instances(EC2/Containers etc) in private subnet to communicate with the Internet but the reverse is not true. Associate public/Elastic IP with each Nat Gateway. for betterment we will keep total number of nat gateways= total number of public subnets. |
+| Internet Gateway                    	| Provide a target in your VPC route tables for internet-routable traffic. Perform network address translation (NAT) for instances that have been assigned public IPv4 addresses                                                                                             |
 
-| AWS Resource           | Notes       |
-|:-----------------------|:------------|
-|Single VPC              |             |
-|Route and Route tables  |             |
+| AWS Resource           | Notes            |
+|:-----------------------|:-----------------|
+| Single VPC             |                  |
+| Route and Route tables |                  |
+| vpc flow logs          | if it is enabled |
 
 ## Example
 ```
@@ -155,18 +155,10 @@ version_id = "001"
 |                     |sub-euc1-n-tech-vpc001-privDb-1b-001                    |
 |                     |sub-euc1-n-tech-vpc001-privDb-1c-001                    |
 
-| Route Tables        |                                                         |
-|:-------------------- |:--------------------------------------------------------|
-|Route table format   |rtb-{region-id}-{environment}-{cost_centre}-vpc{vpc_seq_id}-{pub,privApp,privDb}-{az-indicator}-{seq_id}|
-|Example for route tables|rtb-euc1-n-tech-vpc001-pub-1a-001                  |
-||rtb-euc1-n-tech-vpc001-pub-1b-001                  |
-||rtb-euc1-n-tech-vpc001-pub-1c-001                  |
-||rtb-euc1-n-tech-vpc001-privApp-1a-001              |
-||rtb-euc1-n-tech-vpc001-privApp-1b-001              |
-||rtb-euc1-n-tech-vpc001-privApp-1c-001              |
-||rtb-euc1-n-tech-vpc001-privDb-1a-001              |
-||rtb-euc1-n-tech-vpc001-privDb-1b-001              |
-||rtb-euc1-n-tech-vpc001-privDb-1c-001              |
+| Route Tables        |                                                                                                                              |
+|:-------------------- |:-----------------------------------------------------------------------------------------------------------------------------|
+|Route table format   | rtb-{region-id}-{environment}-{cost_centre}-vpc{vpc_seq_id}-{pub,privApp,privDb}-{seq_id}                                    |
+|Example for route tables| rtb-euc1-n-tech-vpc001-pub-001 , rtb-euc1-n-tech-vpc001-privApp-001,rtb-euc1-n-tech-vpc001-privDb-001                        |
 
 
 | Nat Gateways        |                                                         |
@@ -176,10 +168,6 @@ version_id = "001"
 ||ngw-euc1-n-tech-vpc001-1b-001|
 ||ngw-euc1-n-tech-vpc001-1c-001|
 
-| VPN Gateway        |                                                         |
-|:-------------------- |:--------------------------------------------------------|
-|VPN Gateway format   |vpngw-{region-id}-{environment}-{cost_centre}-{seq_id}|
-||vpngw-euc1-n-tech-001|
 
 | Internet Gateway        |                                                         |
 |:-------------------- |:--------------------------------------------------------|
